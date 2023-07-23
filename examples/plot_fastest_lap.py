@@ -3,7 +3,7 @@
 
 Plot the qualifying result with visualization the fastest times.
 """
-
+# %%
 
 import matplotlib.pyplot as plt
 import pandas as pd
@@ -17,7 +17,7 @@ from fastf1.core import Laps
 # we only want support for timedelta plotting in this example
 fastf1.plotting.setup_mpl(mpl_timedelta_support=True, color_scheme=None, misc_mpl_mods=False)
 
-session = fastf1.get_session(2021, 'Spanish Grand Prix', 'Q')
+session = fastf1.get_session(2023, 'Silverstone', 'R')
 session.load()
 
 
@@ -87,7 +87,8 @@ ax.xaxis.grid(True, which='major', linestyle='--', color='black', zorder=-1000)
 
 lap_time_string = strftimedelta(pole_lap['LapTime'], '%m:%s.%ms')
 
-plt.suptitle(f"{session.event['EventName']} {session.event.year} Qualifying\n"
+plt.suptitle(f"{session.event['EventName']} {session.event.year} {session.name}\n"
              f"Fastest Lap: {lap_time_string} ({pole_lap['Driver']})")
 
 plt.show()
+# %%
